@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "description": "L’Art Classique",
+    "image": "https://res.cloudinary.com/duxlduuy2/image/upload/v1739664249/lart-classique-1_nlkoc4.webp"
+  },
+  {
+    "id": 2,
+    "description": "Boho Chic",
+    "image": "https://res.cloudinary.com/duxlduuy2/image/upload/v1739664248/boho-chic-1_rzqgto.webp"
+  },
+  {
+    "id": 3,
+    "description": "Vintage Elegance",
+    "image": "https://res.cloudinary.com/duxlduuy2/image/upload/v1739664249/vintage-elegance-1_eqwu39.webp"
+  },
+  {
+    "id": 4,
+    "description": "Modern Minimal",
+    "image": "https://res.cloudinary.com/duxlduuy2/image/upload/v1739664249/modern-minimal-1_hi4cld.webp"
+  },
+  {
+    "id": 5,
+    "description": "Rustic Luxe",
+    "image": "https://res.cloudinary.com/duxlduuy2/image/upload/v1739664249/rustic-luxe-1_tdbxis.webp"
+  },
+  {
+    "id": 6,
+    "description": "Jardin Enchanté",
+    "image": "https://res.cloudinary.com/duxlduuy2/image/upload/v1739664249/jardin-enchante-1_qqauf5.webp"
+  }
+]

@@ -1,0 +1,56 @@
+@import 'tailwindcss';
+
+@import '@fontsource-variable/raleway';
+@import '@fontsource-variable/playfair';
+
+body {
+  font-family: 'Raleway Variable', sans-serif;
+}
+
+@theme {
+  --color-primary-50: #fef3ef;
+  --color-primary-100: #fdede7;
+  --color-primary-200: #fbd9cd;
+  --color-primary-300: #f2855d;
+  --color-primary-400: #da7854;
+  --color-primary-500: #c26a4a;
+  --color-primary-600: #b66446;
+  --color-primary-700: #915038;
+  --color-primary-800: #6d3c2a;
+  --color-primary-900: #552f21;
+
+  --color-secondary-50: #ebf3f6;
+  --color-secondary-100: #e1edf2;
+  --color-secondary-200: #c0d9e3;
+  --color-secondary-300: #3584a5;
+  --color-secondary-400: #307795;
+  --color-secondary-500: #2a6a84;
+  --color-secondary-600: #28637c;
+  --color-secondary-700: #204f63;
+  --color-secondary-800: #183b4a;
+  --color-secondary-900: #132e3a;
+
+  --color-tertiary-50: #fefefc;
+  --color-tertiary-100: #fefdfb;
+  --color-tertiary-200: #fdfcf6;
+  --color-tertiary-300: #f8f4e3;
+  --color-tertiary-400: #dfdccc;
+  --color-tertiary-500: #c6c3b6;
+  --color-tertiary-600: #bab7aa;
+  --color-tertiary-700: #959288;
+  --color-tertiary-800: #706e66;
+  --color-tertiary-900: #57554f;
+
+  --color-quaternary-50: #fcfdfd;
+  --color-quaternary-100: #fbfcfc;
+  --color-quaternary-200: #f6f8f9;
+  --color-quaternary-300: #e3e8ec;
+  --color-quaternary-400: #ccd1d4;
+  --color-quaternary-500: #b6babd;
+  --color-quaternary-600: #aaaeb1;
+  --color-quaternary-700: #888b8e;
+  --color-quaternary-800: #66686a;
+  --color-quaternary-900: #4f5153;
+
+  --font-playfair: 'Playfair Display Variable', serif;
+}

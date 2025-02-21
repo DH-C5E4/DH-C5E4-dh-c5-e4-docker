@@ -1,22 +1,49 @@
-import React, { useEffect, useState } from 'react';
+import { lazy } from 'react'
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 
-function App() {
-  const [data, setData] = useState(null);
+const HomeUser = lazy(() => import('@/pages/user/HomeUser'))
+const HomeAdmin = lazy(() => import('@/pages/admin/HomeAdmin'))
+const NotFound = lazy(() => import('@/pages/NotFound'))
+const ProductDetail = lazy(() => import('@/pages/user/ProductDetail'))
+const ProductsList = lazy(() => import('@/pages/admin/ProductsList'))
+const AdminProfile = lazy(() => import('@/pages/admin/AdminProfile'))
 
-  useEffect(() => {
-    // Se hace la llamada al backend en el puerto 8080 (mapeado al host)
-    fetch('http://localhost:8080/api/test')
-      .then((response) => response.json())
-      .then((data) => setData(data))
-      .catch((err) => console.error('Error:', err));
-  }, []);
-
+const App = () => {
   return (
-    <div>
-      <h1>Proyecto Frontend</h1>
-      {data ? <p>{data.message}</p> : <p>Cargando...</p>}
-    </div>
-  );
+    <Router>
+      <Routes>
+        <Route
+          index
+          element={<HomeUser />}
+        />
+
+        <Route
+          path='product/:id'
+          element={<ProductDetail />}
+        />
+
+        <Route path='admin'>
+          <Route
+            index
+            element={<HomeAdmin />}
+          />
+          <Route
+            path='products'
+            element={<ProductsList />}
+          />
+          <Route
+            path='profile'
+            element={<AdminProfile />}
+          />
+        </Route>
+
+        <Route
+          path='*'
+          element={<NotFound />}
+        />
+      </Routes>
+    </Router>
+  )
 }
 
-export default App;
+export default App
