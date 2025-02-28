@@ -1,7 +1,3 @@
--- ==========================
--- SCHEMA EN LA BASE DE DATOS
--- ==========================
-
 CREATE TABLESPACE mytablespace LOCATION '/var/lib/postgresql/data';
 
 -- Tabla de Categorías
@@ -11,6 +7,12 @@ CREATE TABLE IF NOT EXISTS categories (
     title VARCHAR(255) UNIQUE NOT NULL,
     description VARCHAR(255) NOT NULL,
     image VARCHAR(255)
+) TABLESPACE mytablespace;
+
+-- Tabla de Estado de Productos
+CREATE TABLE IF NOT EXISTS product_status (
+    product_status_id BIGSERIAL PRIMARY KEY,
+    description VARCHAR(255) NOT NULL
 ) TABLESPACE mytablespace;
 
 -- Tabla de Productos
@@ -26,11 +28,7 @@ CREATE TABLE IF NOT EXISTS products (
     FOREIGN KEY (product_status_id) REFERENCES product_status(product_status_id) ON DELETE CASCADE
 ) TABLESPACE mytablespace;
 
--- Tabla de Estado de Productos
-CREATE TABLE IF NOT EXISTS product_status (
-    product_status_id BIGSERIAL PRIMARY KEY,
-    description VARCHAR(255) NOT NULL
-) TABLESPACE mytablespace;
+
 
 -- Tabla de Imágenes de Productos
 CREATE TABLE IF NOT EXISTS product_images (
@@ -89,3 +87,5 @@ CREATE TABLE IF NOT EXISTS product_users (
     FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE,
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 ) TABLESPACE mytablespace;
+
+
