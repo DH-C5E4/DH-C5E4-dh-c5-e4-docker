@@ -5,37 +5,37 @@ INSERT INTO product_status (description) VALUES
 
 -- Categorías
 INSERT INTO categories (is_active, title, description, cloudinary_folder,public_id,image) VALUES 
-(true,'LArtClassique', 'Categoría de vajilla con diseños clásicos y elegantes','categories/LArtClassique','categories/LArtClassique/gcbofmixmbuqqma0hyon', 'https://res.cloudinary.com/duxlduuy2/image/upload/v1740962641/categories/LArtClassique/gcbofmixmbuqqma0hyon.webp'),
+(true,'LArt Classique', 'Categoría de vajilla con diseños clásicos y elegantes','categories/LArtClassique','categories/LArtClassique/gcbofmixmbuqqma0hyon', 'https://res.cloudinary.com/duxlduuy2/image/upload/v1740962641/categories/LArtClassique/gcbofmixmbuqqma0hyon.webp'),
 
-(true,'BohoChi', 'Estilo bohemio con patrones naturales y coloridos','categories/BohoChi','categories/BohoChi/ulfklzinfidlypecimpr', 'https://res.cloudinary.com/duxlduuy2/image/upload/v1740963062/categories/BohoChi/ulfklzinfidlypecimpr.webp'),
+(true,'Boho Chic', 'Estilo bohemio con patrones naturales y coloridos','categories/BohoChi','categories/BohoChi/ulfklzinfidlypecimpr', 'https://res.cloudinary.com/duxlduuy2/image/upload/v1740963062/categories/BohoChi/ulfklzinfidlypecimpr.webp'),
 
-(true,'VintageElegance', 'Diseños vintage con toques elegantes','categories/VintageElegance','categories/VintageElegance/aitm5vz5xh78vhd9ksea', 'https://res.cloudinary.com/duxlduuy2/image/upload/v1740963496/categories/VintageElegance/aitm5vz5xh78vhd9ksea.webp'),
+(true,'Vintage Elegance', 'Diseños vintage con toques elegantes','categories/VintageElegance','categories/VintageElegance/aitm5vz5xh78vhd9ksea', 'https://res.cloudinary.com/duxlduuy2/image/upload/v1740963496/categories/VintageElegance/aitm5vz5xh78vhd9ksea.webp'),
 
-(true,'ModernMinimal', 'Estilo moderno con diseños limpios y minimalistas','categories/ModernMinimal','categories/ModernMinimal/dttiq231ilx5wjtml1rb', 'https://res.cloudinary.com/duxlduuy2/image/upload/v1740964090/categories/ModernMinimal/dttiq231ilx5wjtml1rb.webp'),
+(true,'Modern Minimal', 'Estilo moderno con diseños limpios y minimalistas','categories/ModernMinimal','categories/ModernMinimal/dttiq231ilx5wjtml1rb', 'https://res.cloudinary.com/duxlduuy2/image/upload/v1740964090/categories/ModernMinimal/dttiq231ilx5wjtml1rb.webp'),
 
-(true,'RusticLuxe', 'Combinación de lujo con elementos rústicos','categories/RusticLuxe/','categories/RusticLuxe/bsn4y3jjpewpluxy1val', 'https://res.cloudinary.com/duxlduuy2/image/upload/v1740964318/categories/RusticLuxe/bsn4y3jjpewpluxy1val.webp'),
+(true,'Rustic Luxe', 'Combinación de lujo con elementos rústicos','categories/RusticLuxe/','categories/RusticLuxe/bsn4y3jjpewpluxy1val', 'https://res.cloudinary.com/duxlduuy2/image/upload/v1740964318/categories/RusticLuxe/bsn4y3jjpewpluxy1val.webp'),
 
-(true,'JardinEnchanté', 'Inspiración en la naturaleza y jardines','categories/JardinEnchant%C3%A9','categories/JardinEnchant%C3%A9/sywsuihx6xdrsnoq1hfq', 'https://res.cloudinary.com/duxlduuy2/image/upload/v1740964333/categories/JardinEnchant%C3%A9/sywsuihx6xdrsnoq1hfq.webp');
+(true,'Jardin Enchanté', 'Inspiración en la naturaleza y jardines','categories/JardinEnchant%C3%A9','categories/JardinEnchant%C3%A9/sywsuihx6xdrsnoq1hfq', 'https://res.cloudinary.com/duxlduuy2/image/upload/v1740964333/categories/JardinEnchant%C3%A9/sywsuihx6xdrsnoq1hfq.webp');
 
 -- Productos
 INSERT INTO products (name, description, price, category_id, product_status_id, cloudinary_folder) VALUES 
-('set imperial dorado', 'Elegante juego de vajilla con detalles dorados y diseño barroco.', 350.00, 1, 1, 'products/setimperialdorado'),
-('coleccion real azul', 'Vajilla con tonos azul profundo y bordes dorados para cenas sofisticadas.', 420.00, 1, 1, 'products/coleccionrealazul'),
+('Set imperial dorado', 'Elegante juego de vajilla con detalles dorados y diseño barroco.', 350.00, 1, 1, 'products/setimperialdorado'),
+('Coleccion real azul', 'Vajilla con tonos azul profundo y bordes dorados para cenas sofisticadas.', 420.00, 1, 1, 'products/coleccionrealazul'),
 
-('set naturaleza boho', 'Vajilla con diseños florales en tonos tierra, perfecta para ambientes relajados.', 280.00, 2, 1,'products/setnaturalezaboho'),
-('vajilla etnica organica', 'Inspirada en patrones étnicos con un toque moderno.', 310.00, 2, 1, 'products/vajillaetnicaorganica'),
+('Set naturaleza boho', 'Vajilla con diseños florales en tonos tierra, perfecta para ambientes relajados.', 280.00, 2, 1,'products/setnaturalezaboho'),
+('Vajilla etnica organica', 'Inspirada en patrones étnicos con un toque moderno.', 310.00, 2, 1, 'products/vajillaetnicaorganica'),
 
-('set perla azul', 'Delicada vajilla en tonos azul perla con bordes plateados.', 390.00, 3, 1, 'products/setperlaazul'),
-('vajilla dorado majestuoso', 'Conjunto de platos con detalles dorados y cristalería elegante.', 450.00, 3, 1, 'products/vajilladoradomajestuoso'),
+('Set perla azul', 'Delicada vajilla en tonos azul perla con bordes plateados.', 390.00, 3, 1, 'products/setperlaazul'),
+('Vajilla dorado majestuoso', 'Conjunto de platos con detalles dorados y cristalería elegante.', 450.00, 3, 1, 'products/vajilladoradomajestuoso'),
 
-('set blanco puro', 'Vajilla monocromática con líneas modernas y minimalistas.', 260.00, 4, 1, 'products/setblancopuro'),
-('vajilla negra contemporanea', 'Diseño moderno en color negro mate con detalles dorados.', 310.00, 4, 1, 'products/vajillanegracontemporanea'),
+('Set blanco puro', 'Vajilla monocromática con líneas modernas y minimalistas.', 260.00, 4, 1, 'products/setblancopuro'),
+('Vajilla negra contemporanea', 'Diseño moderno en color negro mate con detalles dorados.', 310.00, 4, 1, 'products/vajillanegracontemporanea'),
 
-('set rustico campestre', 'Vajilla inspirada en la naturaleza con acabados en terracota.', 220.00, 5, 1, 'products/setrusticocampestre'),
-('coleccion madera arcilla', 'Perfecta combinación de madera y cerámica para un estilo auténtico.', 290.00, 5, 1, 'products/coleccionmaderaarcilla'),
+('Set rustico campestre', 'Vajilla inspirada en la naturaleza con acabados en terracota.', 220.00, 5, 1, 'products/setrusticocampestre'),
+('Coleccion madera arcilla', 'Perfecta combinación de madera y cerámica para un estilo auténtico.', 290.00, 5, 1, 'products/coleccionmaderaarcilla'),
 
-('set floral encantado', 'Vajilla inspirada en jardines florales con colores vibrantes.', 275.00, 6, 1, 'products/setfloralencantado'),
-('coleccion botanica vintage', 'Vajilla con ilustraciones botánicas inspiradas en la naturaleza.', 325.00, 6, 1, 'products/coleccionbotanicavintage');
+('Set floral encantado', 'Vajilla inspirada en jardines florales con colores vibrantes.', 275.00, 6, 1, 'products/setfloralencantado'),
+('Coleccion botanica vintage', 'Vajilla con ilustraciones botánicas inspiradas en la naturaleza.', 325.00, 6, 1, 'products/coleccionbotanicavintage');
 
 -- Imágenes de Productos
 INSERT INTO product_images (product_id, url,public_id,is_main) VALUES 
@@ -131,6 +131,4 @@ INSERT INTO roles (role_name) VALUES
 
 -- Usuarios con relación 1 a 1 con Roles
 INSERT INTO users(name, surname, email, password, role_id)VALUES
-('maison', 'application', 'cuenta.usuario.proyectos@gmail.com', '$2a$10$AlQdHxYoSrwNDPv8uvym5uPPxiFHdMQhx42lT1X1QNccnqdTO5kRG', 1);
-
-
+('Maison', 'Admin', 'cuenta.usuario.proyectos@gmail.com', '$2a$10$AlQdHxYoSrwNDPv8uvym5uPPxiFHdMQhx42lT1X1QNccnqdTO5kRG', 1);

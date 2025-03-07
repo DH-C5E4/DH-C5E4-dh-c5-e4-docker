@@ -1,4 +1,4 @@
-CREATE TABLESPACE mytablespace LOCATION '/var/lib/postgresql/data';
+CREATE TABLESPACE maisonTablespace LOCATION '/var/lib/postgresql/data';
 
 -- Tabla de Categorías
 CREATE TABLE IF NOT EXISTS categories (
@@ -10,13 +10,13 @@ CREATE TABLE IF NOT EXISTS categories (
     public_id VARCHAR(255) NULL,
     image VARCHAR(255)
     
-) TABLESPACE mytablespace;
+) TABLESPACE maisonTablespace;
 
 -- Tabla de Estado de Productos
 CREATE TABLE IF NOT EXISTS product_status (
     product_status_id BIGSERIAL PRIMARY KEY,
     description VARCHAR(255) NOT NULL
-) TABLESPACE mytablespace;
+) TABLESPACE maisonTablespace;
 
 -- Tabla de Productos
 CREATE TABLE IF NOT EXISTS products (
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS products (
     cloudinary_folder VARCHAR(255),
     FOREIGN KEY (category_id) REFERENCES categories(category_id) ON DELETE CASCADE,
     FOREIGN KEY (product_status_id) REFERENCES product_status(product_status_id) ON DELETE CASCADE
-) TABLESPACE mytablespace;
+) TABLESPACE maisonTablespace;
 
 -- Tabla de Imágenes de Productos
 CREATE TABLE IF NOT EXISTS product_images (
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS product_images (
     public_id VARCHAR(200) NOT NULL,
     is_main BOOLEAN DEFAULT TRUE,
     FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE
-) TABLESPACE mytablespace;
+) TABLESPACE maisonTablespace;
 
 -- Tabla de Características de Productos
 CREATE TABLE IF NOT EXISTS attributes (
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS attributes (
     is_active BOOLEAN DEFAULT TRUE,
     icon VARCHAR(150) NOT NULL,
     description VARCHAR(255) UNIQUE NOT NULL
-) TABLESPACE mytablespace;
+) TABLESPACE maisonTablespace;
 
 -- Relación Producto - Características (Muchos a Muchos)
 CREATE TABLE IF NOT EXISTS product_attributes (
@@ -56,13 +56,13 @@ CREATE TABLE IF NOT EXISTS product_attributes (
     attribute_id BIGINT NOT NULL,
     FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE,
     FOREIGN KEY (attribute_id) REFERENCES attributes(attribute_id) ON DELETE CASCADE
-) TABLESPACE mytablespace;
+) TABLESPACE maisonTablespace;
 
 -- Tabla de Roles
 CREATE TABLE IF NOT EXISTS roles (
     role_id BIGSERIAL PRIMARY KEY,
     role_name VARCHAR(255) UNIQUE NOT NULL
-) TABLESPACE mytablespace;
+) TABLESPACE maisonTablespace;
 
 -- Tabla de Usuarios con relación 1 a 1 con Roles
 CREATE TABLE IF NOT EXISTS users (
@@ -71,10 +71,10 @@ CREATE TABLE IF NOT EXISTS users (
     surname VARCHAR(45) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
-    role_id BIGINT UNIQUE NOT NULL,  -- Relación uno a uno
+    role_id BIGINT NOT NULL,  -- Relación uno a uno
     is_active boolean default true,
     FOREIGN KEY (role_id) REFERENCES roles(role_id) ON DELETE CASCADE
-) TABLESPACE mytablespace;
+) TABLESPACE maisonTablespace;
 
 -- Relación Usuarios - Productos (Usuarios que poseen productos)
 CREATE TABLE IF NOT EXISTS product_users (
@@ -83,4 +83,4 @@ CREATE TABLE IF NOT EXISTS product_users (
     user_id BIGINT NOT NULL,
     FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE,
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
-) TABLESPACE mytablespace;
+) TABLESPACE maisonTablespace;
