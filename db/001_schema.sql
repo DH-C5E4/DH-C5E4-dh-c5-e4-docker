@@ -69,6 +69,7 @@ CREATE TABLE IF NOT EXISTS products (
     FOREIGN KEY (category_id) REFERENCES categories(category_id) ON DELETE CASCADE,
     FOREIGN KEY (product_status_id) REFERENCES product_status(product_status_id) ON DELETE cascade,
     FOREIGN KEY (stock_id) REFERENCES stock(stock_id) ON DELETE CASCADE
+) TABLESPACE maisonTablespace;
 
 -- Tabla de Estado de Reservas
 CREATE TABLE IF NOT EXISTS booking_status (
