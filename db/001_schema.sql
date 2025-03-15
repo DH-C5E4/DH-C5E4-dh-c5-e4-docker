@@ -57,6 +57,7 @@ CREATE TABLE IF NOT EXISTS stock (
     quantity INT NOT NULL
 ) TABLESPACE maisonTablespace;
 
+
 -- Tabla de Productos (indexar tabla producto)
 CREATE TABLE IF NOT EXISTS products (
     product_id BIGSERIAL PRIMARY KEY,
@@ -141,6 +142,7 @@ CREATE TABLE IF NOT EXISTS favorites (
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
     FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE
 ) TABLESPACE maisonTablespace;
+
 
 -- Tabla de Reseñas de Clientes
 CREATE TABLE IF NOT EXISTS customer_review (
