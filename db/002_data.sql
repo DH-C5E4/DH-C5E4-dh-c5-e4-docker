@@ -1,9 +1,18 @@
--- Estado de Productos
-INSERT INTO product_status (description) VALUES 
-('Active'),
-('Inactive');
+-- Roles
+INSERT INTO roles (role_name) VALUES 
+('ADMIN'),
+('USER');
 
--- Categorías
+-- Usuarios con relación 1 a 1 con Roles
+INSERT INTO users(name, surname, email, password, role_id,is_active)VALUES
+('maison', 'application', 'cuenta.usuario.proyectos@gmail.com', 'ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f', 1,true),
+('Laura', 'González', 'laura.gonzalez@gmail.com', 'ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f', 2,true),
+('Carlos', 'Méndez', 'carlos.mendez@gmail.com', 'ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f', 2,true),
+('Sofía', 'Ramírez', 'sofia.ramirez@gmail.com', 'ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f', 2,true),
+('Javier', 'Fernández', 'javier.fernandez@gmail.com', 'ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f', 2,true),
+('María', 'López', 'maria.lopez@gmail.com', 'ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f', 2,true);
+
+-- Categorías                       
 INSERT INTO categories (is_active, title, description, cloudinary_folder,public_id,image) VALUES 
 (true,'LArtClassique', 'Categoría de vajilla con diseños clásicos y elegantes','categories/LArtClassique','categories/LArtClassique/gcbofmixmbuqqma0hyon', 'https://res.cloudinary.com/duxlduuy2/image/upload/v1740962641/categories/LArtClassique/gcbofmixmbuqqma0hyon.webp'),
 
@@ -17,28 +26,53 @@ INSERT INTO categories (is_active, title, description, cloudinary_folder,public_
 
 (true,'JardinEnchanté', 'Inspiración en la naturaleza y jardines','categories/JardinEnchant%C3%A9','categories/JardinEnchant%C3%A9/sywsuihx6xdrsnoq1hfq', 'https://res.cloudinary.com/duxlduuy2/image/upload/v1740964333/categories/JardinEnchant%C3%A9/sywsuihx6xdrsnoq1hfq.webp');
 
-INSERT INTO stock(price,quantity)VALUES
-(350.0,1),(420.0,1),(280.0,1),(190.0,1),(275.0,1),(220.0,1);
+-- Estado de Productos
+INSERT INTO product_status (description) VALUES 
+('Active'),
+('Inactive');
+
+INSERT INTO event_address (street, city, state, postal_code) 
+VALUES ('Av. Siempre Viva 742', 'Springfield', 'SP', '12345'),
+('Calle 123', 'Madrid', 'MD', '28001'),
+('Avenida Reforma 456', 'Ciudad de México', 'CDMX', '11000'),
+('Rua das Flores 78', 'São Paulo', 'SP', '04567-890'),
+('Boulevard Saint-Michel 32', 'París', 'IDF', '75005'),
+('Main Street 88', 'Los Ángeles', 'CA', '90012');
 
 -- Productos
-INSERT INTO products (stock_id,name, description, category_id, product_status_id, cloudinary_folder) VALUES 
-(1,'sét impérial dorado', 'Elegante juego de vajilla con detalles dorados y diseño barroco.', 1, 1, 'products/setimperialdorado'),
-(1,'coleccion real azúl', 'Vajilla con tonos azul profundo y bordes dorados para cenas sofisticadas.', 1, 1, 'products/coleccionrealazul'),
+INSERT INTO products (name, description, category_id, product_status_id, cloudinary_folder, price, quantity) VALUES 
+('sét impérial dorado', 'Elegante juego de vajilla con detalles dorados y diseño barroco.', 1, 1, 'products/setimperialdorado',350.0,1),
+('coleccion real azúl', 'Vajilla con tonos azul profundo y bordes dorados para cenas sofisticadas.', 1, 1, 'products/coleccionrealazul',420.0,1),
 
-(2,'set náturalezá boho', 'Vajilla con diseños florales en tonos tierra, perfecta para ambientes relajados.',  2, 1,'products/setnaturalezaboho'),
-(2,'vajilla etnica órganica', 'Inspirada en patrones étnicos con un toque moderno.',  2, 1, 'products/vajillaetnicaorganica'),
+('set náturalezá boho', 'Vajilla con diseños florales en tonos tierra, perfecta para ambientes relajados.',  2, 1,'products/setnaturalezaboho',280.0,1),
+('vajilla etnica órganica', 'Inspirada en patrones étnicos con un toque moderno.',  2, 1, 'products/vajillaetnicaorganica',195.0,1),
 
-(3,'set perla azúl', 'Delicada vajilla en tonos azul perla con bordes plateados.',  3, 1, 'products/setperlaazul'),
-(3,'vajílla dorado majestuoso', 'Conjunto de platos con detalles dorados y cristalería elegante.',  3, 1, 'products/vajilladoradomajestuoso'),
+('set perla azúl', 'Delicada vajilla en tonos azul perla con bordes plateados.',  3, 1, 'products/setperlaazul',510.0,1),
+('vajílla dorado majestuoso', 'Conjunto de platos con detalles dorados y cristalería elegante.',  3, 1, 'products/vajilladoradomajestuoso',255.0,1),
 
-(4,'set blanco puro', 'Vajilla monocromática con líneas modernas y minimalistas.',  4, 1, 'products/setblancopuro'),
-(4,'vajilla negra contemporanea', 'Diseño moderno en color negro mate con detalles dorados.',  4, 1, 'products/vajillanegracontemporanea'),
+('set blanco puro', 'Vajilla monocromática con líneas modernas y minimalistas.',  4, 1, 'products/setblancopuro',220.0,1),
+('vajilla negra contemporanea', 'Diseño moderno en color negro mate con detalles dorados.',  4, 1, 'products/vajillanegracontemporanea',280.0,1),
 
-(4,'set rustico campestre', 'Vajilla inspirada en la naturaleza con acabados en terracota.',  5, 1, 'products/setrusticocampestre'),
-(4,'coleccion madera arcilla', 'Perfecta combinación de madera y cerámica para un estilo auténtico.',  5, 1, 'products/coleccionmaderaarcilla'),
+('set rustico campestre', 'Vajilla inspirada en la naturaleza con acabados en terracota.',  5, 1, 'products/setrusticocampestre',245.0,1),
+('coleccion madera arcilla', 'Perfecta combinación de madera y cerámica para un estilo auténtico.',  5, 1, 'products/coleccionmaderaarcilla',156.0,1),
 
-(4,'set floral encantado', 'Vajilla inspirada en jardines florales con colores vibrantes.', 6, 1, 'products/setfloralencantado'),
-(4,'coleccion botanica vintage', 'Vajilla con ilustraciones botánicas inspiradas en la naturaleza.', 6, 1, 'products/coleccionbotanicavintage');
+('set floral encantado', 'Vajilla inspirada en jardines florales con colores vibrantes.', 6, 1, 'products/setfloralencantado',405.0,1),
+('coleccion botanica vintage', 'Vajilla con ilustraciones botánicas inspiradas en la naturaleza.', 6, 1, 'products/coleccionbotanicavintage',233.0,1);
+
+INSERT INTO booking_status (status) 
+VALUES ('CREATED'),
+('PENDING'),
+('CONFIRMED'),
+('COMPLETED'),
+('CANCELLED');
+                
+INSERT INTO bookings (user_id, booking_status_id, event_address_id, event_name, booking_date, number_guests, delivery_schedule, collection_schedule,created_at, email_sent, product_id) 
+VALUES (2, 1, 1, 'Boda de Ana y Luis', '2025-03-14', 50, '2025-03-15 10:00:00', '2025-03-16 12:00:00','2025-03-16 12:00:00',true, 1),
+(2, 2, 2, 'Fiesta de Aniversario', '2025-04-09', 30, '2025-04-10 15:00:00', '2025-04-11 12:00:00','2025-03-16 12:00:00',true, 3),
+(3, 4, 3, 'Reunión Corporativa', '2025-04-04', 100, '2025-04-05 08:00:00', '2025-04-06 20:00:00','2025-03-16 12:00:00',true, 5),
+(4, 3, 4, 'Cumpleaños Infantil', '2025-03-19', 20, '2025-03-20 14:00:00', '2025-03-22 18:00:00','2025-03-16 12:00:00',true, 8),
+(5, 4, 5, 'Cena Romántica', '2025-03-13', 2, '2025-03-14 19:00:00', '2025-07-15 23:00:00','2025-03-16 12:00:00',true, 2),
+(6, 5, 6, 'Fiesta de Graduación', '2025-05-28', 50, '2025-05-29 16:00:00', '2025-05-30 10:00:00', '2025-03-16 12:00:00',true, 1);
 
 -- Imágenes de Productos
 INSERT INTO product_images (product_id, url,public_id,is_main) VALUES 
@@ -217,52 +251,13 @@ INSERT INTO product_attributes (product_id, attribute_id) VALUES
 (11, 6), (11, 8), (11, 10),
 (12, 6), (12, 7), (12, 9);
 
--- Roles
-INSERT INTO roles (role_name) VALUES 
-('ADMIN'),
-('USER');
-
--- Usuarios con relación 1 a 1 con Roles
-INSERT INTO users(name, surname, email, password, role_id)VALUES
-('maison', 'application', 'cuenta.usuario.proyectos@gmail.com', '$2a$10$AlQdHxYoSrwNDPv8uvym5uPPxiFHdMQhx42lT1X1QNccnqdTO5kRG', 1),
-('Laura', 'González', 'laura.gonzalez@gmail.com', '$2a$10$AlQdHxYoSrwNDPv8uvym5uPPxiFHdMQhx42lT1X1QNccnqdTO5kRG', 2),
-('Carlos', 'Méndez', 'carlos.mendez@gmail.com', '$2a$10$AlQdHxYoSrwNDPv8uvym5uPPxiFHdMQhx42lT1X1QNccnqdTO5kRG', 2),
-('Sofía', 'Ramírez', 'sofia.ramirez@gmail.com', '$2a$10$AlQdHxYoSrwNDPv8uvym5uPPxiFHdMQhx42lT1X1QNccnqdTO5kRG', 2),
-('Javier', 'Fernández', 'javier.fernandez@gmail.com', '$2a$10$AlQdHxYoSrwNDPv8uvym5uPPxiFHdMQhx42lT1X1QNccnqdTO5kRG', 2),
-('María', 'López', 'maria.lopez@gmail.com', '$2a$10$AlQdHxYoSrwNDPv8uvym5uPPxiFHdMQhx42lT1X1QNccnqdTO5kRG', 2);
-
-INSERT INTO event_address (street, city, state, postal_code) 
-VALUES ('Av. Siempre Viva 742', 'Springfield', 'SP', '12345'),
-('Calle 123', 'Madrid', 'MD', '28001'),
-('Avenida Reforma 456', 'Ciudad de México', 'CDMX', '11000'),
-('Rua das Flores 78', 'São Paulo', 'SP', '04567-890'),
-('Boulevard Saint-Michel 32', 'París', 'IDF', '75005'),
-('Main Street 88', 'Los Ángeles', 'CA', '90012');
-
-INSERT INTO booking_status (status) 
-VALUES ('CREATED'),
-('PENDING'),
-('CONFIRMED'),
-('COMPLETED'),
-('CANCELLED');
-
-INSERT INTO bookings (user_id, booking_status_id, event_address_id, event_name, booking_date, number_guests, delivery_schedule, collection_schedule, product_id) 
-VALUES (2, 1, 1, 'Boda de Ana y Luis', '2025-03-14', 50, '2025-03-15 10:00:00', '2025-03-16 12:00:00', 1),
-(2, 2, 2, 'Fiesta de Aniversario', '2025-04-09', 30, '2025-04-10 15:00:00', '2025-04-11 12:00:00', 3),
-(3, 4, 3, 'Reunión Corporativa', '2025-04-04', 100, '2025-04-05 08:00:00', '2025-04-06 20:00:00', 5),
-(4, 3, 4, 'Cumpleaños Infantil', '2025-03-19', 20, '2025-03-20 14:00:00', '2025-03-22 18:00:00', 8),
-(5, 4, 5, 'Cena Romántica', '2025-03-13', 2, '2025-03-14 19:00:00', '2025-07-15 23:00:00', 2),
-(6, 5, 6, 'Fiesta de Graduación', '2025-05-28', 50, '2025-05-29 16:00:00', '2025-05-30 10:00:00', 6);
-
-INSERT INTO customer_review (rating, review, user_id, booking_id) 
-VALUES (5, 'Excelente calidad y presentación.', 2, 1),
-(4, 'Buena calidad, pero esperaba más.', 2, 1),
-(5, 'La vajilla era hermosa y elegante, hizo que la cena fuera especial.', 2, 2),
-(2, 'Buena calidad, pero la entrega fue un poco tardía.', 3, 3),
-(3, 'Los platos estaban bien, un diseño muy llamativo.', 4, 4),
-(5, 'Increíble servicio, todo llegó a tiempo y en perfecto estado.', 5, 5),
-(2, 'No me gustó mucho el material de los cubiertos.', 6, 6);
-
-
 INSERT INTO favorites(user_id,product_id)
 VALUES (2,8),(3,4),(4,6),(5,7),(6,1),(2,12);
+ 
+INSERT INTO customer_review (user_id, booking_id, rating, title, review, created_at) 
+VALUES (2,1,4, 'Excelente calidad', 'Excelente calidad y presentación.', '2025-05-16 12:00:00'),
+(2, 2, 5, 'Hermosa y elegante','La vajilla era hermosa y elegante, hizo que la cena fuera especial.', '2025-05-16 12:00:00'),
+(3, 3, 2, 'Entrega tardía', 'Buena calidad, pero la entrega fue un poco tardía.', '2025-05-16 12:00:00'),
+(4, 4, 3, 'Diseño llamativo', 'Los platos estaban bien, un diseño muy llamativo.', '2025-05-16 12:00:00'),
+(5, 5, 5, 'Servicio increíble', 'Increíble servicio, todo llegó a tiempo y en perfecto estado.', '2025-05-16 12:00:00'),
+(6, 6, 2, 'Material mejorable', 'No me gustó mucho el material de los cubiertos.', '2025-05-16 12:00:00');
