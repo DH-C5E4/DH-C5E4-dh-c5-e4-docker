@@ -1,8 +1,10 @@
-drop tablespace if exists maisonTablespace;
+--drop tablespace if exists maisonTablespace;
+--CREATE TABLESPACE maisonTablespace LOCATION '/var/lib/postgresql/data';
 
-CREATE TABLESPACE maisonTablespace LOCATION '/var/lib/postgresql/data';
+drop schema if exists public cascade;
+create schema public;
+set schema 'public';
 
--- drop EXTENSION if exists unaccent;
 create extension if not exists unaccent schema public;
 
 -- Tabla de Roles
@@ -50,29 +52,30 @@ CREATE TABLE IF NOT EXISTS product_status (
     description VARCHAR(255) NOT NULL
 ) TABLESPACE maisonTablespace;
 
--- Tabla de Dirección del Evento
-CREATE TABLE IF NOT EXISTS event_address (
-    event_address_id BIGSERIAL PRIMARY KEY,
-    street VARCHAR(255) NOT NULL,
-    city VARCHAR(255) NOT NULL,
-    state VARCHAR(255) NOT NULL,
-    postal_code VARCHAR(15) NOT NULL    
+create table if not exists products_rating (
+	product_rating_id BIGSERIAL PRIMARY key,
+	five_stars int2 default 0,
+	four_stars int2 default 0,
+	three_stars int2 default 0,
+	two_stars int2 default 0,
+	one_star int2 default 0
 ) TABLESPACE maisonTablespace;
 
 -- Tabla de Productos (indexar tabla producto)
 CREATE TABLE IF NOT EXISTS products (
     product_id BIGSERIAL PRIMARY key,
-    name VARCHAR(255) UNIQUE NOT NULL,
-    description VARCHAR(255) NOT NULL,
     category_id BIGINT NOT NULL,
     product_status_id BIGINT NOT NULL,
+    product_rating_id BIGINT,
+    name VARCHAR(255) UNIQUE NOT NULL,
+    description VARCHAR(255) NOT NULL,
     cloudinary_folder VARCHAR(255),
     price NUMERIC(38,2) NOT NULL,
 	quantity smallint not null,
-    rating_average NUMERIC(38,2) DEFAULT 0,
-    total_sum_review INT DEFAULT 0,
     FOREIGN KEY (category_id) REFERENCES categories(category_id) ON DELETE CASCADE,
-    FOREIGN KEY (product_status_id) REFERENCES product_status(product_status_id) ON DELETE cascade
+    FOREIGN KEY (product_status_id) REFERENCES product_status(product_status_id) ON DELETE cascade,
+    FOREIGN KEY (product_rating_id) REFERENCES products_rating(product_rating_id)
+    
 ) TABLESPACE maisonTablespace;
 
 -- Tabla de Estado de Reservas
@@ -81,25 +84,36 @@ CREATE TABLE IF NOT EXISTS booking_status (
     status VARCHAR(255) NOT NULL
 ) TABLESPACE maisonTablespace;
 
+-- Tabla de Dirección del Evento
+CREATE TABLE IF NOT EXISTS event_address (
+    event_address_id BIGSERIAL PRIMARY KEY,
+    country varchar(50) not null,
+    state VARCHAR(255) NOT NULL,
+    city VARCHAR(255) NOT NULL,
+    street VARCHAR(255) NOT NULL,
+    neighborhood varchar(255) not null
+) TABLESPACE maisonTablespace;
+
 -- Tabla de Reservas (Bookings)
 CREATE TABLE IF NOT EXISTS bookings (
     booking_id BIGSERIAL PRIMARY KEY,
     user_id BIGINT NOT NULL,
+    product_id BIGINT NOT NULL,
     booking_status_id BIGINT NOT NULL,
     event_address_id BIGINT NOT NULL,
-    event_name VARCHAR(255) NOT NULL,
-    booking_date DATE NOT NULL,
-    number_guests INT NOT NULL,
-    delivery_schedule TIMESTAMP NOT NULL,
-    collection_schedule TIMESTAMP NOT NULL,
+    event_date DATE NOT NULL,
+    delivery_schedule DATE NOT NULL,
+    collection_schedule DATE NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     email_sent BOOLEAN DEFAULT FALSE,
-    product_id BIGINT NOT NULL,
+    folio varchar(15) UNIQUE,
+    comment varchar(255),
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
     FOREIGN KEY (booking_status_id) REFERENCES booking_status(booking_status_id) ON DELETE CASCADE,
     FOREIGN KEY (event_address_id) REFERENCES event_address(event_address_id) ON DELETE CASCADE,
-    FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE
+    FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE cascade
 ) TABLESPACE maisonTablespace;
+
 
 -- Tabla de Imágenes de Productos
 CREATE TABLE IF NOT EXISTS product_images (
@@ -138,7 +152,7 @@ CREATE TABLE IF NOT EXISTS favorites (
 ) TABLESPACE maisonTablespace;
 
 -- Tabla de Reseñas de Clientes
-CREATE TABLE IF NOT EXISTS customer_review (
+CREATE TABLE IF NOT EXISTS customer_reviews (
     customer_review_id BIGSERIAL PRIMARY KEY,
     user_id BIGINT NOT NULL,
     booking_id BIGINT NOT NULL,
@@ -150,48 +164,38 @@ CREATE TABLE IF NOT EXISTS customer_review (
     FOREIGN KEY (booking_id) REFERENCES bookings(booking_id) ON DELETE CASCADE
 ) TABLESPACE maisonTablespace;
 
-
 CREATE INDEX idx_product_name ON products(name);
-CREATE INDEX idx_booking_date ON bookings(booking_date);
-CREATE INDEX idx_customer_review_booking_id ON customer_review(booking_id);
+CREATE INDEX idx_event_date ON bookings(event_date);
+CREATE INDEX idx_customer_reviews_booking_id ON customer_reviews(booking_id);
 
-CREATE OR REPLACE FUNCTION update_product_rating()
+--  función de validación
+CREATE OR REPLACE FUNCTION check_product_availability()
 RETURNS TRIGGER AS $$
 DECLARE
-    v_product_id BIGINT;
+    existing_booking INT;
 BEGIN
-    -- Obtener el product_id asociado al booking_id de la reseña
-    SELECT p.product_id INTO v_product_id
-    FROM bookings b
-    JOIN products p ON b.product_id = p.product_id
-    WHERE b.booking_id = NEW.booking_id;
+    -- Verifica si ya hay una reserva para el mismo producto en las fechas dadas
+    SELECT COUNT(*) INTO existing_booking
+    FROM bookings
+    WHERE product_id = NEW.product_id
+    AND booking_status_id NOT IN (3, 4)  -- No considerar reservas COMPLETED o CANCELLED
+    AND (
+        delivery_schedule BETWEEN  NEW.delivery_schedule AND  NEW.collection_schedule
+        OR event_date = BETWEEN  NEW.delivery_schedule AND  NEW.collection_schedule
+        OR collection_schedule = BETWEEN  NEW.delivery_schedule AND  NEW.collection_schedule
+    );
 
-    -- Si el product_id existe
-    IF v_product_id IS NOT NULL THEN
-        -- Actualizar el rating en la tabla products
-        UPDATE products
-        SET rating_average = (
-            SELECT COALESCE(AVG(rating), 0) 
-            FROM customer_review 
-            WHERE booking_id IN (
-                SELECT booking_id FROM bookings WHERE product_id = v_product_id
-            )
-        ),
-        total_sum_review = (
-            SELECT COUNT(*) 
-            FROM customer_review 
-            WHERE booking_id IN (
-                SELECT booking_id FROM bookings WHERE product_id = v_product_id
-            )
-        )
-        WHERE product_id = v_product_id;
+    -- Si ya hay una reserva en esas fechas, bloquear el INSERT
+    IF existing_booking >= 1 THEN
+        RAISE EXCEPTION 'El producto ya está reservado en una de las fechas seleccionadas';
     END IF;
 
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER trigger_update_product_rating
-AFTER INSERT ON customer_review
+-- Trigger
+CREATE TRIGGER prevent_duplicate_booking
+BEFORE INSERT ON bookings
 FOR EACH ROW
-EXECUTE FUNCTION update_product_rating();
+EXECUTE FUNCTION check_product_availability();

@@ -3,18 +3,65 @@ INSERT INTO roles (role_name) VALUES
 ('ADMIN'),
 ('USER');
 
+-- Estado de Productos
+INSERT INTO product_status (description) VALUES 
+('Active'),
+('Inactive');
+
+INSERT INTO booking_status (status) 
+VALUES ('CREATED'),
+('CONFIRMED'),
+('COMPLETED'),
+('CANCELLED');
+
 -- Usuarios con relación 1 a 1 con Roles
 INSERT INTO users(name, surname, email, password, role_id,is_active)VALUES
-('maison', 'application', 'cuenta.usuario.proyectos@gmail.com', 'ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f', 1,true),
-('Laura', 'González', 'laura.gonzalez@gmail.com', 'ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f', 2,true),
-('Carlos', 'Méndez', 'carlos.mendez@gmail.com', 'ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f', 2,true),
-('Sofía', 'Ramírez', 'sofia.ramirez@gmail.com', 'ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f', 2,true),
-('Javier', 'Fernández', 'javier.fernandez@gmail.com', 'ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f', 2,true),
-('María', 'López', 'maria.lopez@gmail.com', 'ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f', 2,true);
+('maison', 'application', 'cuenta.usuario.proyectos@gmail.com', '$2a$10$AlQdHxYoSrwNDPv8uvym5uPPxiFHdMQhx42lT1X1QNccnqdTO5kRG', 1,true),
+('Laura', 'González', 'laura.gonzalez@gmail.com', '$2a$10$iTb0hCu80BH6Eg8ZWj8fI.omth9QEXn7nn2nNBylgWBC4GCTi10y2', 2,true),
+('Carlos', 'Méndez', 'carlos.mendez@gmail.com', '$2a$10$dv13JUx9m5KFS3r0iis7oOc9xYzdrKeId3dMG/FO1vzPpDsJt5ps2', 2,true),
+('Sofía', 'Ramírez', 'sofia.ramirez@gmail.com', '$2a$10$A9Todqz/mjubB2TWvYA3IOfMn1G2LBi3AZyVtj5oBKjQ5tF7ovaW.', 2,true),
+('Javier', 'Fernández', 'javier.fernandez@gmail.com', '$2a$10$PKspTUPa8dDWFPui8ic6b.81VhuErI5F7uiUMJtCr21c1vLkkJi2y', 2,true),
+('María', 'López', 'maria.lopez@gmail.com', '$2a$10$31gwT1d3vJnDu5ldcEYjD.8l/zned.y2Q.30uQgNUijzedgxI0gU2', 2,true);
+
+-- Passwords
+-- Laura -> Laura123
+--{
+--  "clearPassword": "Laura123",
+--  "SHA-256 / swagger": "dbbf038fada6d9cf8b3b3b730d3bb95984ce6a517e72a578818f51c20e799d5f",
+--  "Password encode / DB": "$2a$10$iTb0hCu80BH6Eg8ZWj8fI.omth9QEXn7nn2nNBylgWBC4GCTi10y2"
+--}
+
+-- Carlos -> Carlos123
+--{
+--  "clearPassword": "Carlos123",
+--  "SHA-256 / swagger": "470ea79e04621c2e126e3a0a560bb1d94878809e7b7df20aa04f1662ecddf102",
+--  "Password encode / DB": "$2a$10$dv13JUx9m5KFS3r0iis7oOc9xYzdrKeId3dMG/FO1vzPpDsJt5ps2"
+--}
+-- Sofía -> Sofía123
+--{
+--  "clearPassword": "Sofía123",
+--  "SHA-256 / swagger": "a3c585610ebe3446c3a35b49cfc4fd06a936219a7d2771f2032aed24b660d1ae",
+--  "Password encode / DB": "$2a$10$A9Todqz/mjubB2TWvYA3IOfMn1G2LBi3AZyVtj5oBKjQ5tF7ovaW."
+--}
+-- Javier -> Javier123
+--{
+--  "clearPassword": "Javier123",
+--  "SHA-256 / swagger": "d3e1360609f65a9ca4850b1e144c696e039364fd8f50cc7fcc8a0dd4f09280a7",
+--  "Password encode / DB": "$2a$10$PKspTUPa8dDWFPui8ic6b.81VhuErI5F7uiUMJtCr21c1vLkkJi2y"
+--}
+-- María -> María123
+--{
+--  "clearPassword": "María123",
+--  "SHA-256 / swagger": "4f9135d83e0e891d76007b7f25f0b95fb054c27d7dfb1c420d34aec9ecbba70a",
+--  "Password encode / DB": "$2a$10$31gwT1d3vJnDu5ldcEYjD.8l/zned.y2Q.30uQgNUijzedgxI0gU2"
+--}
+
+--INSERT INTO users(name, surname, email, password, role_id,is_active)VALUES
+--('Daniel', 'Cortés', 'dancoweb@gmail.com', '$2a$10$Ra8GSrApGuBhjvw/93UOD.LJRKRnwOI7io8R3y2ZcuNqBiyfarV9a', 2, true);
 
 -- Categorías                       
 INSERT INTO categories (is_active, title, description, cloudinary_folder,public_id,image) VALUES 
-(true,'LArtClassique', 'Categoría de vajilla con diseños clásicos y elegantes','categories/LArtClassique','categories/LArtClassique/gcbofmixmbuqqma0hyon', 'https://res.cloudinary.com/duxlduuy2/image/upload/v1740962641/categories/LArtClassique/gcbofmixmbuqqma0hyon.webp'),
+(true,'LArtClassique', 'Categoría de vajilla con diseños clásicos y elegantes','categories/LArtClassique','categories/LArtClassique/zaanvauml5snzqf0zycb', 'https://res.cloudinary.com/duxlduuy2/image/upload/v1741306984/categories/LArtClassique/zaanvauml5snzqf0zycb.webp'),
 
 (true,'BohoChi', 'Estilo bohemio con patrones naturales y coloridos','categories/BohoChi','categories/BohoChi/ulfklzinfidlypecimpr', 'https://res.cloudinary.com/duxlduuy2/image/upload/v1740963062/categories/BohoChi/ulfklzinfidlypecimpr.webp'),
 
@@ -24,55 +71,43 @@ INSERT INTO categories (is_active, title, description, cloudinary_folder,public_
 
 (true,'RusticLuxe', 'Combinación de lujo con elementos rústicos','categories/RusticLuxe/','categories/RusticLuxe/bsn4y3jjpewpluxy1val', 'https://res.cloudinary.com/duxlduuy2/image/upload/v1740964318/categories/RusticLuxe/bsn4y3jjpewpluxy1val.webp'),
 
-(true,'JardinEnchanté', 'Inspiración en la naturaleza y jardines','categories/JardinEnchant%C3%A9','categories/JardinEnchant%C3%A9/sywsuihx6xdrsnoq1hfq', 'https://res.cloudinary.com/duxlduuy2/image/upload/v1740964333/categories/JardinEnchant%C3%A9/sywsuihx6xdrsnoq1hfq.webp');
+(true,'JardinEnchanté', 'Inspiración en la naturaleza y jardines','categories/JardinEnchanté','categories/JardinEnchanté/sywsuihx6xdrsnoq1hfq', 'https://res.cloudinary.com/duxlduuy2/image/upload/v1740964333/categories/JardinEnchant%C3%A9/sywsuihx6xdrsnoq1hfq.webp');
 
--- Estado de Productos
-INSERT INTO product_status (description) VALUES 
-('Active'),
-('Inactive');
+INSERT INTO event_address (country, state, city, neighborhood, street) --street, city, state, postal_code) 
+VALUES 
+('Colombia', 'Springfield', 'Sprinfield city', 'San Barrio', 'Av. Siempre Viva 742'),
+('Colombia', 'MD', 'Madrid', 'Trifulca', 'Calle 123'),
+('Colombia', 'Ciudad de México', 'Ciudad de México', 'Benito Juárez', 'Avenida Reforma 456'),
+('Colombia', 'SP', 'Rua das Flores 78', 'Janeiro', 'São Paulo 35-4'),
+('Colombia', 'IDF', 'Boulevard Saint-Michel 32', 'San Vicé', 'París'),
+('Colombia', 'Cundinamarca', 'Bogotá D.C.', 'Santa Bárbara', 'Crr 4B #20-5');
 
-INSERT INTO event_address (street, city, state, postal_code) 
-VALUES ('Av. Siempre Viva 742', 'Springfield', 'SP', '12345'),
-('Calle 123', 'Madrid', 'MD', '28001'),
-('Avenida Reforma 456', 'Ciudad de México', 'CDMX', '11000'),
-('Rua das Flores 78', 'São Paulo', 'SP', '04567-890'),
-('Boulevard Saint-Michel 32', 'París', 'IDF', '75005'),
-('Main Street 88', 'Los Ángeles', 'CA', '90012');
+insert into products_rating (five_stars, four_stars, three_stars, two_stars, one_star) values
+(0, 1, 0, 0, 0),
+(1, 0, 0, 0, 0),
+(0, 0, 0, 1, 0),
+(0, 0, 1, 0, 0),
+(1, 0, 0, 0, 0);
 
 -- Productos
-INSERT INTO products (name, description, category_id, product_status_id, cloudinary_folder, price, quantity) VALUES 
-('sét impérial dorado', 'Elegante juego de vajilla con detalles dorados y diseño barroco.', 1, 1, 'products/setimperialdorado',350.0,1),
-('coleccion real azúl', 'Vajilla con tonos azul profundo y bordes dorados para cenas sofisticadas.', 1, 1, 'products/coleccionrealazul',420.0,1),
+INSERT INTO products (name, description, category_id, product_status_id, cloudinary_folder, price, quantity, product_rating_id) VALUES 
+('sét impérial dorado', 'Elegante juego de vajilla con detalles dorados y diseño barroco.', 1, 1, 'products/setimperialdorado',350.0, 1, 1),
+('coleccion real azúl', 'Vajilla con tonos azul profundo y bordes dorados para cenas sofisticadas.', 1, 1, 'products/coleccionrealazul',420.0,1, 5),
 
-('set náturalezá boho', 'Vajilla con diseños florales en tonos tierra, perfecta para ambientes relajados.',  2, 1,'products/setnaturalezaboho',280.0,1),
-('vajilla etnica órganica', 'Inspirada en patrones étnicos con un toque moderno.',  2, 1, 'products/vajillaetnicaorganica',195.0,1),
+('set náturalezá boho', 'Vajilla con diseños florales en tonos tierra, perfecta para ambientes relajados.',  2, 1,'products/setnaturalezaboho',280.0,1,2),
+('vajilla etnica órganica', 'Inspirada en patrones étnicos con un toque moderno.',  2, 1, 'products/vajillaetnicaorganica',195.0,1, null),
 
-('set perla azúl', 'Delicada vajilla en tonos azul perla con bordes plateados.',  3, 1, 'products/setperlaazul',510.0,1),
-('vajílla dorado majestuoso', 'Conjunto de platos con detalles dorados y cristalería elegante.',  3, 1, 'products/vajilladoradomajestuoso',255.0,1),
+('set perla azúl', 'Delicada vajilla en tonos azul perla con bordes plateados.',  3, 1, 'products/setperlaazul',510.0,1,3),
+('vajílla dorado majestuoso', 'Conjunto de platos con detalles dorados y cristalería elegante.',  3, 1, 'products/vajilladoradomajestuoso',255.0,1, null),
 
-('set blanco puro', 'Vajilla monocromática con líneas modernas y minimalistas.',  4, 1, 'products/setblancopuro',220.0,1),
-('vajilla negra contemporanea', 'Diseño moderno en color negro mate con detalles dorados.',  4, 1, 'products/vajillanegracontemporanea',280.0,1),
+('set blanco puro', 'Vajilla monocromática con líneas modernas y minimalistas.',  4, 1, 'products/setblancopuro',220.0,1, null),
+('vajilla negra contemporanea', 'Diseño moderno en color negro mate con detalles dorados.',  4, 1, 'products/vajillanegracontemporanea',280.0,1,4),
 
-('set rustico campestre', 'Vajilla inspirada en la naturaleza con acabados en terracota.',  5, 1, 'products/setrusticocampestre',245.0,1),
-('coleccion madera arcilla', 'Perfecta combinación de madera y cerámica para un estilo auténtico.',  5, 1, 'products/coleccionmaderaarcilla',156.0,1),
+('set rustico campestre', 'Vajilla inspirada en la naturaleza con acabados en terracota.',  5, 1, 'products/setrusticocampestre',245.0,1, null),
+('coleccion madera arcilla', 'Perfecta combinación de madera y cerámica para un estilo auténtico.',  5, 1, 'products/coleccionmaderaarcilla',156.0,1, null),
 
-('set floral encantado', 'Vajilla inspirada en jardines florales con colores vibrantes.', 6, 1, 'products/setfloralencantado',405.0,1),
-('coleccion botanica vintage', 'Vajilla con ilustraciones botánicas inspiradas en la naturaleza.', 6, 1, 'products/coleccionbotanicavintage',233.0,1);
-
-INSERT INTO booking_status (status) 
-VALUES ('CREATED'),
-('PENDING'),
-('CONFIRMED'),
-('COMPLETED'),
-('CANCELLED');
-                
-INSERT INTO bookings (user_id, booking_status_id, event_address_id, event_name, booking_date, number_guests, delivery_schedule, collection_schedule,created_at, email_sent, product_id) 
-VALUES (2, 1, 1, 'Boda de Ana y Luis', '2025-03-14', 50, '2025-03-15 10:00:00', '2025-03-16 12:00:00','2025-03-16 12:00:00',true, 1),
-(2, 2, 2, 'Fiesta de Aniversario', '2025-04-09', 30, '2025-04-10 15:00:00', '2025-04-11 12:00:00','2025-03-16 12:00:00',true, 3),
-(3, 4, 3, 'Reunión Corporativa', '2025-04-04', 100, '2025-04-05 08:00:00', '2025-04-06 20:00:00','2025-03-16 12:00:00',true, 5),
-(4, 3, 4, 'Cumpleaños Infantil', '2025-03-19', 20, '2025-03-20 14:00:00', '2025-03-22 18:00:00','2025-03-16 12:00:00',true, 8),
-(5, 4, 5, 'Cena Romántica', '2025-03-13', 2, '2025-03-14 19:00:00', '2025-07-15 23:00:00','2025-03-16 12:00:00',true, 2),
-(6, 5, 6, 'Fiesta de Graduación', '2025-05-28', 50, '2025-05-29 16:00:00', '2025-05-30 10:00:00', '2025-03-16 12:00:00',true, 1);
+('set floral encantado', 'Vajilla inspirada en jardines florales con colores vibrantes.', 6, 1, 'products/setfloralencantado',405.0,1, null),
+('coleccion botanica vintage', 'Vajilla con ilustraciones botánicas inspiradas en la naturaleza.', 6, 1, 'products/coleccionbotanicavintage',233.0,1, null);
 
 -- Imágenes de Productos
 INSERT INTO product_images (product_id, url,public_id,is_main) VALUES 
@@ -81,20 +116,17 @@ INSERT INTO product_images (product_id, url,public_id,is_main) VALUES
 (1, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1741144895/arteclasico4kldqqn_ngpgkd.webp','arteclasico4kldqqn_ngpgkd',false),
 (1, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1741143759/ecpgfqdsksveo6adkea5_dfvlt6.webp','ecpgfqdsksveo6adkea5_dfvlt6',false),
 (1, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742013694/set_imperial_dorado_gc2x15.webp','set_imperial_dorado_gc2x15',false),
-
 (1, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742014534/Arte_Clasico_5_xcvbdg_qd62yl_flkthg.webp','Arte_Clasico_5_xcvbdg_qd62yl_flkthg',false),
 (1, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742015354/jwquj6h4wuqud8zl19a7_drkhx6_asvbgs.webp','jwquj6h4wuqud8zl19a7_drkhx6_asvbgs',false),
 (1, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742015360/arteclaasico5z2fu7fplqbpp_t0dvpg.webp','arteclaasico5z2fu7fplqbpp_t0dvpg',false),
 (1, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742014287/coleccion_real_azul_1_glokzz.webp','coleccion_real_azul_1_glokzz',false),
 (1, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742014287/coleccion_real_azul_2_bss1gt.webp','coleccion_real_azul_2_bss1gt',false),
 
-
 (2, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1741143690/jwquj6h4wuqud8zl19a7_drkhx6.webp','jwquj6h4wuqud8zl19a7_drkhx6',true),
 (2, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1741144187/Arte_Cla%CC%81sico_5_z2fu7f_plqbpp.webp','Arte_Clásico_5_z2fu7f_plqbpp',false),
 (2, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1741144272/Arte_Clasico_5_xcvbdg_qd62yl.webp','Arte_Clasico_5_xcvbdg_qd62yl',false),
 (2, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742015845/coleccion_real_azul_2_yfnabi.webp','coleccion_real_azul_2_yfnabi',false),
 (2, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742015845/coleccion_real_azul_1_qkyuq8.webp','coleccion_real_azul_1_qkyuq8',false),
-
 (2, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742016024/ecpgfqdsksveo6adkea5_dfvlt6_mfmyoa.webp','ecpgfqdsksveo6adkea5_dfvlt6_mfmyoa',false),
 (2, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742016027/set_imperial_dorado_gc2x15_gyqtsj.webp','set_imperial_dorado_gc2x15_gyqtsj',false),
 (2, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742016033/arteclasico3jx3i7t_muzskg_qntwhj.webp','arteclasico3jx3i7t_muzskg_qntwhj',false),
@@ -107,7 +139,6 @@ INSERT INTO product_images (product_id, url,public_id,is_main) VALUES
 (3, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1741145520/bohochic5auzdkq_cja75m.webp','bohochic5auzdkq_cja75m',false),
 (3, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742017083/set_naturaleza_boho_2_msbs7k.webp','set_naturaleza_boho_2_msbs7k',false),
 (3, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742017086/set_naturaleza_boho_1_lqwnfr.webp','set_naturaleza_boho_1_lqwnfr',false),
-
 (3, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742017874/bkdp54wokfugc4mi93js_aa8r1j_a3mrem.webp','bkdp54wokfugc4mi93js_aa8r1j_a3mrem',false),
 (3, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742017878/zrjwcnanmvcahntg6ky6_md9jmk_bn3udt.webp','zrjwcnanmvcahntg6ky6_md9jmk_bn3udt',false),
 (3, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742017882/ugby875zwcb5wsq2aiof_sqet0w_knsvzg.webp','ugby875zwcb5wsq2aiof_sqet0w_knsvzg',false),
@@ -120,7 +151,6 @@ INSERT INTO product_images (product_id, url,public_id,is_main) VALUES
 (4, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1741142714/ugby875zwcb5wsq2aiof_sqet0w.webp','ugby875zwcb5wsq2aiof_sqet0w',false),
 (4, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1741142719/vaxjb5w88lovxciacaad_wzsgqx.webp','vaxjb5w88lovxciacaad_wzsgqx',false),
 (4, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742017285/Vajilla_etnia_organica_1_s64hnz.webp','Vajilla_etnia_organica_1_s64hnz',false),
-
 (4, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742017289/Vajilla_etnia_organica_2_azz45k.webp','Vajilla_etnia_organica_2_azz45k',false),
 (4, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742017471/set_naturaleza_boho_2_msbs7k_sknrrn.webp','set_naturaleza_boho_2_msbs7k_sknrrn',false),
 (4, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742017475/set_naturaleza_boho_1_lqwnfr_mqadws.webp','set_naturaleza_boho_1_lqwnfr_mqadws',false),
@@ -132,7 +162,6 @@ INSERT INTO product_images (product_id, url,public_id,is_main) VALUES
 (5, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1741145941/Vintage_Elegance_1_xqlqxp_nrx2dg.webp','Vintage_Elegance_1_xqlqxp_nrx2dg',false),
 (5, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742018288/set_perla_azul_2_hkhyhk.webp','set_perla_azul_2_hkhyhk',false),
 (5, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742018290/set_perla_azul_1_uckq9q.webp','set_perla_azul_1_uckq9q',false),
-
 (5, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742019176/Vintage_Elegance_2_jpdtrz_rcqpeh_h7xigo.webp','Vintage_Elegance_2_jpdtrz_rcqpeh_h7xigo',false),
 (5, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742019173/dorado_majestuoso_2_f8e6b0_x2oj8s.webp','dorado_majestuoso_2_f8e6b0_x2oj8s',false),
 (5, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742019169/dorado_majestuoso_1_mkjzsg_eqwysl.webp','dorado_majestuoso_1_mkjzsg_eqwysl',false),
@@ -144,7 +173,6 @@ INSERT INTO product_images (product_id, url,public_id,is_main) VALUES
 (6, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1741145993/Vintage_Elegance_2_jpdtrz_rcqpeh.webp','Vintage_Elegance_2_jpdtrz_rcqpeh',false),
 (6, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742018544/dorado_majestuoso_1_mkjzsg.webp','dorado_majestuoso_1_mkjzsg',false),
 (6, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742018547/dorado_majestuoso_2_f8e6b0.webp','dorado_majestuoso_2_f8e6b0',false),
-
 (6, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742018667/Vintage_Elegance_4_gjoxty_m88uqb_qlmlpl.webp','Vintage_Elegance_4_gjoxty_m88uqb_qlmlpl',false),
 (6, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742018870/Vintage_Elegance_1_xqlqxp_nrx2dg_cky5oj.webp','Vintage_Elegance_1_xqlqxp_nrx2dg_cky5oj',false),
 (6, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742018873/set_perla_azul_1_uckq9q_q2lfif.webp','set_perla_azul_1_uckq9q_q2lfif',false),
@@ -155,7 +183,6 @@ INSERT INTO product_images (product_id, url,public_id,is_main) VALUES
 (7, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1741146381/Modern_Minimal_4_zzyheb_ebunye.webp','Modern_Minimal_4_zzyheb_ebunye',false),
 (7, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742019844/set_blanco_puro_2_wp7xpu.webp','set_blanco_puro_2_wp7xpu',false),
 (7, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742019846/set_blanco_puro_1_xvnyba.webp','set_blanco_puro_1_xvnyba',false),
-
 (7, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742019995/Modern_Minimal_5_iar5wh_sfc5hs_zkumte.webp','Modern_Minimal_5_iar5wh_sfc5hs_zkumte',false),
 
 (8, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1741146432/Modern_Minimal_6_srbtld_kbnupf.webp','Modern_Minimal_6_srbtld_kbnupf',true),
@@ -172,7 +199,6 @@ INSERT INTO product_images (product_id, url,public_id,is_main) VALUES
 (9, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1741147072/RusticLuxe1a8undxo5btxb.webp','RusticLuxe1a8undxo5btxb',false),
 (9, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742022897/Set_rustico_campestre_1_dxjui0.webp','Set_rustico_campestre_1_dxjui0',false),
 (9, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742022900/Set_rustico_campestre_2_unuesc.webp','Set_rustico_campestre_2_unuesc',false),
-
 (9, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742024179/RusticLuxe6dz4jun_p4mxtq_q9jq17.webp','RusticLuxe6dz4jun_p4mxtq_q9jq17',false),
 (9, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742024183/Coleccion_madera_arcilla_1_j28rog_atpxpf.webp','Coleccion_madera_arcilla_1_j28rog_atpxpf',false),
 (9, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742024187/Coleccion_madera_arcilla_2_uy09gz_e2bjjw.webp','Coleccion_madera_arcilla_2_uy09gz_e2bjjw',false),
@@ -184,8 +210,7 @@ INSERT INTO product_images (product_id, url,public_id,is_main) VALUES
 (10, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1741147132/RusticLuxe2tyrjgeizybwh.webp','RusticLuxe2tyrjgeizybwh',false),
 (10, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742023147/Coleccion_madera_arcilla_1_j28rog.webp','Coleccion_madera_arcilla_1_j28rog',false),
 (10, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742023151/Coleccion_madera_arcilla_2_uy09gz.webp','Coleccion_madera_arcilla_2_uy09gz',false),
-
-(10, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742023506/Set_rustico_campestre_2_unuesc_nz4qcc.webp','Set_rustico_campestre_2_unuesc_nz4qcc',false),
+(10, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742023506/Set_rustico_campestre_2_unuesc_nz4qcc.webp','Set_rustico_campestre_2_unuescnz4qcc',false),
 (10, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742023509/Set_rustico_campestre_1_dxjui0_n8qse9.webp','Set_rustico_campestre_1_dxjui0_n8qse9',false),
 (10, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742023514/RusticLuxe1a8undx_o5btxb_wljldg.webp','RusticLuxe1a8undx_o5btxb_wljldg',false),
 (10, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742023518/RusticLuxe3b5vdin_bdurzv_ydyb1s.webp','RusticLuxe3b5vdin_bdurzv_ydyb1s',false),
@@ -196,7 +221,6 @@ INSERT INTO product_images (product_id, url,public_id,is_main) VALUES
 (11, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1741147796/JardinEnchante1qzbpvcplgwtv.webp','JardinEnchante1qzbpvcplgwtv',false),
 (11, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742024665/set_floral_encantado_1_mrbqav.webp','set_floral_encantado_1_mrbqav',false),
 (11, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742024668/set_floral_encantado_2_zbxny6.webp','set_floral_encantado_2_zbxny6',false),
-
 (11, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742025672/coleccion_botanica_vintage_2_r1syof_ppxnmz.webp','coleccion_botanica_vintage_2_r1syof_ppxnmz',false),
 (11, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742025677/hhhneaowzjzfvb6noixm_gmnrho.webp','hhhneaowzjzfvb6noixm_gmnrho',false),
 (11, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742025684/JardinEnchante3kopi5n_x0sfo7_y6pm1f.webp','JardinEnchante3kopi5n_x0sfo7_y6pm1f',false),
@@ -208,7 +232,6 @@ INSERT INTO product_images (product_id, url,public_id,is_main) VALUES
 (12, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1741153984/JardinEnchante4fvrnafdpm6v1.webp','JardinEnchante4fvrnafdpm6v1',false),
 (12, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742024867/coleccion_botanica_vintage_2_r1syof.webp','coleccion_botanica_vintage_2_r1syof',false),
 (12, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742024871/coleccion_botanica_vintage_1_sdeaeu.webp','coleccion_botanica_vintage_1_sdeaeu',false),
-
 (12, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742025046/JardinEnchante5vsd7fz_vinlq2_oalfjo.webp','JardinEnchante5vsd7fz_vinlq2_oalfjo',false),
 (12, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742025051/JardinEnchantee2sg7r0d_mozbqo_khtrlc.webp','JardinEnchantee2sg7r0d_mozbqo_khtrlc',false),
 (12, 'https://res.cloudinary.com/duxlduuy2/image/upload/v1742025055/set_floral_encantado_1_mrbqav_kbyher.webp','set_floral_encantado_1_mrbqav_kbyher',false),
@@ -253,11 +276,18 @@ INSERT INTO product_attributes (product_id, attribute_id) VALUES
 
 INSERT INTO favorites(user_id,product_id)
 VALUES (2,8),(3,4),(4,6),(5,7),(6,1),(2,12);
- 
-INSERT INTO customer_review (user_id, booking_id, rating, title, review, created_at) 
-VALUES (2,1,4, 'Excelente calidad', 'Excelente calidad y presentación.', '2025-05-16 12:00:00'),
-(2, 2, 5, 'Hermosa y elegante','La vajilla era hermosa y elegante, hizo que la cena fuera especial.', '2025-05-16 12:00:00'),
-(3, 3, 2, 'Entrega tardía', 'Buena calidad, pero la entrega fue un poco tardía.', '2025-05-16 12:00:00'),
-(4, 4, 3, 'Diseño llamativo', 'Los platos estaban bien, un diseño muy llamativo.', '2025-05-16 12:00:00'),
-(5, 5, 5, 'Servicio increíble', 'Increíble servicio, todo llegó a tiempo y en perfecto estado.', '2025-05-16 12:00:00'),
-(6, 6, 2, 'Material mejorable', 'No me gustó mucho el material de los cubiertos.', '2025-05-16 12:00:00');
+
+INSERT INTO bookings (user_id, booking_status_id, event_address_id, delivery_schedule, event_date, collection_schedule,created_at, email_sent, product_id, folio) 
+VALUES (2, 1, 1, '2025-06-14', '2025-06-15', '2025-06-16','2025-03-20 12:00:00',true, 1, '20250615-1513'),
+(2, 2, 2, '2025-04-09', '2025-04-10', '2025-04-11','2025-03-19 12:00:00',true, 3, '20250410-1740'),
+(3, 4, 3, '2025-04-04', '2025-04-05', '2025-04-06','2025-03-15 12:00:00',true, 5, '20250405-1023'),
+(4, 3, 4, '2025-08-19', '2025-08-20', '2025-08-21','2025-03-01 12:00:00',true, 8, '20250820-0910'),
+(5, 4, 5, '2025-07-13', '2025-07-14', '2025-07-15','2025-03-16 12:00:00',true, 2, '20250714-0304'),
+(6, 5, 6, '2025-05-28', '2025-05-29', '2025-05-30', '2025-03-11 12:00:00',true, 1, '20250529-2400');
+
+INSERT INTO customer_reviews(user_id, booking_id, rating, title, review, created_at) VALUES 
+(2, 1, 4, 'Excelente calidad', 'Excelente calidad y presentación.', '2025-05-16'),
+(2, 2, 5, 'Hermosa y elegante','La vajilla era hermosa y elegante, hizo que la cena fuera especial.', '2025-05-16'),
+(3, 3, 2, 'Entrega tardía', 'Buena calidad, pero la entrega fue un poco tardía.', '2025-05-16'),
+(4, 4, 3, 'Diseño llamativo', 'Los platos estaban bien, un diseño muy llamativo.', '2025-05-16'),
+(5, 5, 5, 'Servicio increíble', 'Increíble servicio, todo llegó a tiempo y en perfecto estado.', '2025-05-16');
